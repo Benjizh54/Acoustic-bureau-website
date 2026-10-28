@@ -199,9 +199,9 @@ document.addEventListener('DOMContentLoaded',function(){
 </script><style>
 .ab-reveal .ab-w{display:inline-block;white-space:nowrap;}
 .ab-reveal .ab-c{display:inline-block;}
-.ab-reveal.ab-ready .ab-c{opacity:0;filter:blur(4px);transform:translateY(.2em);}
-.ab-reveal.ab-in .ab-c{animation:ab-reveal-c .5s ease-out forwards;animation-delay:calc(var(--n)*.022s);}
-@keyframes ab-reveal-c{to{opacity:1;filter:none;transform:none;}}
+.ab-reveal.ab-ready .ab-c{opacity:0;filter:blur(10px);}
+.ab-reveal.ab-in .ab-c{animation:ab-reveal-c 1.4s ease-out forwards;}
+@keyframes ab-reveal-c{0%{opacity:0;filter:blur(10px);}40%{opacity:1;}100%{opacity:1;filter:blur(0);}}
 @media (prefers-reduced-motion:reduce){.ab-reveal.ab-ready .ab-c{opacity:1;filter:none;transform:none;animation:none;}}
 </style>
 <script>

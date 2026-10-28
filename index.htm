@@ -281,6 +281,38 @@ document.addEventListener('DOMContentLoaded',function(){
     if(last){ last.appendChild(t); } else { el.appendChild(t); }
   });
 });
+</script><style>
+.ab-spark-host{cursor:default;transition:text-shadow .3s;}
+.ab-spark-host.ab-spark-on{text-shadow:0 0 10px rgba(255,215,90,.55);}
+.ab-spark{position:fixed;z-index:9999;pointer-events:none;width:var(--s);height:var(--s);margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);
+  animation:ab-spark-tw .9s ease-out forwards;}
+.ab-spark svg{width:100%;height:100%;display:block;}
+@keyframes ab-spark-tw{0%{transform:scale(0) rotate(0);opacity:0;}35%{transform:scale(1) rotate(60deg);opacity:1;}100%{transform:scale(0) rotate(160deg);opacity:0;}}
+@media (prefers-reduced-motion:reduce){.ab-spark{display:none;}}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var cols=['#ff5757','#669642','#4a53fa','#b619ad','#eddd4a','#1a3a9e','#ffd75a'];
+  var hosts=[].slice.call(document.querySelectorAll('p,h2')).filter(function(e){
+    return /^\s*contact\s+acoustic\s*bureau:?\s*$/i.test((e.textContent||'').replace(/\s+/g,' '));});
+  function spark(el){
+    var rg=document.createRange(); rg.selectNodeContents(el); var r=rg.getBoundingClientRect(); if(!r.width) r=el.getBoundingClientRect(); if(!r.width) return;
+    var d=document.createElement('span'); d.className='ab-spark'; d.setAttribute('aria-hidden','true');
+    var sz=10+Math.random()*14; d.style.setProperty('--s',sz+'px');
+    d.style.left=(r.left-10+Math.random()*(r.width+20))+'px';
+    d.style.top=(r.top-8+Math.random()*(r.height+16))+'px';
+    var c=cols[Math.floor(Math.random()*cols.length)];
+    d.innerHTML='<svg viewBox="0 0 24 24"><path fill="'+c+'" d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>';
+    document.body.appendChild(d); setTimeout(function(){d.remove();},950);
+  }
+  hosts.forEach(function(el){
+    el.classList.add('ab-spark-host'); var timer=null;
+    function start(){ if(timer) return; el.classList.add('ab-spark-on'); for(var i=0;i<6;i++) spark(el); timer=setInterval(function(){spark(el);spark(el);},110); }
+    function stop(){ clearInterval(timer); timer=null; el.classList.remove('ab-spark-on'); }
+    el.addEventListener('mouseenter',start); el.addEventListener('mouseleave',stop);
+    el.addEventListener('touchstart',function(){ start(); setTimeout(stop,1400); },{passive:true});
+  });
+});
 </script></head><body><div id="root"><div class="yIDCqA"><main class="_8OlyIw"><div class="_4KoDHA"><div class="l3vAqg"><nav class="jDe9Eg" style="background-color: rgb(255, 255, 255); top: 0px;"><div class="ab-dots" aria-hidden="true"><span style="background:#ff5757;--i:0"></span><span style="background:#669642;--i:1"></span><span style="background:#030404;--i:2"></span><span style="background:#4a53fa;--i:3"></span><span style="background:#b619ad;--i:4"></span><span style="background:#eddd4a;--i:5"></span><span style="background:#1a3a9e;--i:6"></span></div><ul class="DBPC9g"><li class="KJpqkQ kWEHHA _7QzcfA ab-nav-logo"><a href="#PBLjZj3PQ1ddMK3h" aria-label="Acoustic Bureau home" draggable="false"><img src="favicon-192.png" alt="Acoustic Bureau logo" width="24" height="24"/></a></li><li class="KJpqkQ kWEHHA _7QzcfA" style="color: rgb(48, 66, 84);"><a class="x1ypdohk x1heor9g x1hl2dhg G0_5vg" draggable="false" href="#PBLjZj3PQ1ddMK3h" role="menuitem"><span style="font-family: YAFdJs2qTWQ_0, -apple-system, BlinkMacSystemFont, sans-serif;">Home</span></a></li><li class="KJpqkQ kWEHHA _7QzcfA" style="color: rgb(48, 66, 84);"><a class="x1ypdohk x1heor9g x1hl2dhg G0_5vg" draggable="false" href="#skills-anchor" role="menuitem"><span style="font-family: YAFdJs2qTWQ_0, -apple-system, BlinkMacSystemFont, sans-serif;">Our Skills</span></a></li><li class="KJpqkQ kWEHHA _7QzcfA" style="color: rgb(48, 66, 84);"><a class="x1ypdohk x1heor9g x1hl2dhg G0_5vg" draggable="false" href="#motto-anchor" role="menuitem"><span style="font-family: YAFdJs2qTWQ_0, -apple-system, BlinkMacSystemFont, sans-serif;">Our Motto</span></a></li><li class="KJpqkQ kWEHHA _7QzcfA" style="color: rgb(48, 66, 84);"><a class="x1ypdohk x1heor9g x1hl2dhg G0_5vg" draggable="false" href="#contact-anchor" role="menuitem"><span style="font-family: YAFdJs2qTWQ_0, -apple-system, BlinkMacSystemFont, sans-serif;">Contact</span></a></li><li class="KJpqkQ kWEHHA _7QzcfA" style="color: rgb(48, 66, 84);"><a class="x1ypdohk x1heor9g x1hl2dhg G0_5vg" draggable="false" href="#faq-anchor" role="menuitem"><span style="font-family: YAFdJs2qTWQ_0, -apple-system, BlinkMacSystemFont, sans-serif;">FAQ</span></a></li></ul><ul class="DBPC9g mobile-nav-list"><li class="KJpqkQ kWEHHA _7QzcfA ab-nav-logo"><a href="#m-home-anchor" aria-label="Acoustic Bureau home" draggable="false"><img src="favicon-192.png" alt="Acoustic Bureau logo" width="24" height="24"/></a></li><li class="KJpqkQ kWEHHA _7QzcfA" style="color: rgb(48, 66, 84);"><a class="x1ypdohk x1heor9g x1hl2dhg G0_5vg" draggable="false" href="#m-home-anchor" role="menuitem"><span style="font-family: YAFdJs2qTWQ_0, -apple-system, BlinkMacSystemFont, sans-serif;">Home</span></a></li><li class="KJpqkQ kWEHHA _7QzcfA" style="color: rgb(48, 66, 84);"><a class="x1ypdohk x1heor9g x1hl2dhg G0_5vg" draggable="false" href="#m-skills-anchor" role="menuitem"><span style="font-family: YAFdJs2qTWQ_0, -apple-system, BlinkMacSystemFont, sans-serif;">Our Skills</span></a></li><li class="KJpqkQ kWEHHA _7QzcfA" style="color: rgb(48, 66, 84);"><a class="x1ypdohk x1heor9g x1hl2dhg G0_5vg" draggable="false" href="#m-motto-anchor" role="menuitem"><span style="font-family: YAFdJs2qTWQ_0, -apple-system, BlinkMacSystemFont, sans-serif;">Our Motto</span></a></li><li class="KJpqkQ kWEHHA _7QzcfA" style="color: rgb(48, 66, 84);"><a class="x1ypdohk x1heor9g x1hl2dhg G0_5vg" draggable="false" href="#m-contact-anchor" role="menuitem"><span style="font-family: YAFdJs2qTWQ_0, -apple-system, BlinkMacSystemFont, sans-serif;">Contact</span></a></li><li class="KJpqkQ kWEHHA _7QzcfA" style="color: rgb(48, 66, 84);"><a class="x1ypdohk x1heor9g x1hl2dhg G0_5vg" draggable="false" href="#m-faq-anchor" role="menuitem"><span style="font-family: YAFdJs2qTWQ_0, -apple-system, BlinkMacSystemFont, sans-serif;">FAQ</span></a></li></ul></nav><div id="mobile-view">
 <section class="m-hero" id="m-home-anchor" style="position: relative;">
 <img alt="Sound wave banner" class="m-hero-banner" src="Acoustic%20Bureau_files/fa429b5e70e3e149e427f664a8ef929a_MZjY.jpg"/>

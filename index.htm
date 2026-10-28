@@ -283,11 +283,11 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script><style>
 .ab-spark-host{cursor:default;transition:text-shadow .3s;}
-.ab-spark-host.ab-spark-on{text-shadow:0 0 10px rgba(255,215,90,.55);}
+.ab-spark-host.ab-spark-on{text-shadow:0 0 6px rgba(255,215,90,.25);}
 .ab-spark{position:fixed;z-index:9999;pointer-events:none;width:var(--s);height:var(--s);margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);
-  animation:ab-spark-tw .9s ease-out forwards;}
+  animation:ab-spark-tw 1.3s ease-in-out forwards;}
 .ab-spark svg{width:100%;height:100%;display:block;}
-@keyframes ab-spark-tw{0%{transform:scale(0) rotate(0);opacity:0;}35%{transform:scale(1) rotate(60deg);opacity:1;}100%{transform:scale(0) rotate(160deg);opacity:0;}}
+@keyframes ab-spark-tw{0%{transform:scale(0) rotate(0);opacity:0;}45%{transform:scale(1) rotate(45deg);opacity:.65;}100%{transform:scale(0) rotate(90deg);opacity:0;}}
 @media (prefers-reduced-motion:reduce){.ab-spark{display:none;}}
 </style>
 <script>
@@ -298,16 +298,16 @@ document.addEventListener('DOMContentLoaded',function(){
   function spark(el){
     var rg=document.createRange(); rg.selectNodeContents(el); var r=rg.getBoundingClientRect(); if(!r.width) r=el.getBoundingClientRect(); if(!r.width) return;
     var d=document.createElement('span'); d.className='ab-spark'; d.setAttribute('aria-hidden','true');
-    var sz=10+Math.random()*14; d.style.setProperty('--s',sz+'px');
+    var sz=6+Math.random()*7; d.style.setProperty('--s',sz+'px');
     d.style.left=(r.left-10+Math.random()*(r.width+20))+'px';
     d.style.top=(r.top-8+Math.random()*(r.height+16))+'px';
     var c=cols[Math.floor(Math.random()*cols.length)];
     d.innerHTML='<svg viewBox="0 0 24 24"><path fill="'+c+'" d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>';
-    document.body.appendChild(d); setTimeout(function(){d.remove();},950);
+    document.body.appendChild(d); setTimeout(function(){d.remove();},1350);
   }
   hosts.forEach(function(el){
     el.classList.add('ab-spark-host'); var timer=null;
-    function start(){ if(timer) return; el.classList.add('ab-spark-on'); for(var i=0;i<6;i++) spark(el); timer=setInterval(function(){spark(el);spark(el);},110); }
+    function start(){ if(timer) return; el.classList.add('ab-spark-on'); spark(el); timer=setInterval(function(){spark(el);},260); }
     function stop(){ clearInterval(timer); timer=null; el.classList.remove('ab-spark-on'); }
     el.addEventListener('mouseenter',start); el.addEventListener('mouseleave',stop);
     el.addEventListener('touchstart',function(){ start(); setTimeout(stop,1400); },{passive:true});
